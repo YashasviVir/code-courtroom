@@ -6,7 +6,7 @@ from prompt import MAIN_PROMPT
 from sub_agents.compliance_agent import compliance_agent
 from sub_agents.defendant_agent import defendant_agent
 from sub_agents.judge_agent import judge_agent
-from sub_agents.optimzer_agent import optimizer_agent
+from sub_agents.optimizer_agent import optimizer_agent
 from sub_agents.prosecutor_agent import prosecutor_agent
 
 
