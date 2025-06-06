@@ -1,6 +1,7 @@
 from google.adk.agents import LlmAgent
 from google.adk.tools.agent_tool import AgentTool
 
+from config import config
 from prompt import MAIN_PROMPT
 from sub_agents.compliance_agent import compliance_agent
 from sub_agents.defendant_agent import defendant_agent
@@ -10,11 +11,9 @@ from sub_agents.prosecutor_agent import prosecutor_agent
 
 
 def main():
-    MODEL = "gemini-2.5-pro-preview-05-06"
-
     code_courtroom_coordinator = LlmAgent(
         name="code_courtroom_coordinator",
-        model=MODEL,
+        model=config.model_name,
         description=("you are the judge."),
         instruction=MAIN_PROMPT,
         tools=[
