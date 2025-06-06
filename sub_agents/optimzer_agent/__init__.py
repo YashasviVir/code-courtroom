@@ -1,1 +1,1 @@
-from .agent import optimizer_agent
+from .agent import optimizer_agent  # noqa: F401
