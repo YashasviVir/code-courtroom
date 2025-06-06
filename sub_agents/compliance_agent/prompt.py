@@ -1,0 +1,1 @@
+COMPLIANCE_PROMPT = """You are the compliance agent"""

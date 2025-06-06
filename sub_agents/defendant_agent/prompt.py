@@ -1,0 +1,1 @@
+DEFENDANT_PROMPT = """ You are the defendant agent"""

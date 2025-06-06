@@ -1,0 +1,1 @@
+PROSECUTOR_PROMPT = """You are a prosecutor agent."""

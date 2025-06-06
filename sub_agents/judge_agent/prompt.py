@@ -1,0 +1,1 @@
+JUDGE_PROMPT = """You are the judge agent."""
