@@ -1,5 +1,9 @@
+import textwrap
+
 from google.adk.agents import LlmAgent
+from google.adk.runners import InMemoryRunner
 from google.adk.tools.agent_tool import AgentTool
+from google.genai.types import Part, UserContent
 
 from config import config
 from prompt import MAIN_PROMPT
@@ -26,6 +30,34 @@ def main():
     )
 
     root_agent = code_courtroom_coordinator
+    run_agent(root_agent)
+
+
+async def run_agent(root_agent):
+    """Runs the agent on a simple input and expects a normal response."""
+    user_input = textwrap.dedent(
+        """
+        Double check this:
+        Question: who are you.
+    """
+    ).strip()
+
+    runner = InMemoryRunner(agent=root_agent)
+    session = await runner.session_service.create_session(
+        app_name=runner.app_name, user_id="test_user"
+    )
+    content = UserContent(parts=[Part(text=user_input)])
+    response = ""
+    async for event in runner.run_async(
+        user_id=session.user_id,
+        session_id=session.id,
+        new_message=content,
+    ):
+        print(event)
+        if event.content.parts and event.content.parts[0].text:
+            response = event.content.parts[0].text
+
+    print("Response:", response)
 
 
 if __name__ == "__main__":
