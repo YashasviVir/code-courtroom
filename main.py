@@ -1,40 +1,13 @@
 import asyncio
 import textwrap
 
-from dotenv import load_dotenv
-from google.adk.agents import LlmAgent
 from google.adk.runners import InMemoryRunner
-from google.adk.tools.agent_tool import AgentTool
 from google.genai.types import Part, UserContent
 
-from config import config
-from prompt import MAIN_PROMPT
-from sub_agents.compliance_agent import compliance_agent
-from sub_agents.defendant_agent import defendant_agent
-from sub_agents.judge_agent import judge_agent
-from sub_agents.optimizer_agent import optimizer_agent
-from sub_agents.prosecutor_agent import prosecutor_agent
+from agents.agent import root_agent
 
 
 async def main():
-    load_dotenv()
-
-    code_courtroom_coordinator = LlmAgent(
-        name="code_courtroom_coordinator",
-        model=config.model_name,
-        description=("you are the judge."),
-        instruction=MAIN_PROMPT,
-        tools=[
-            AgentTool(agent=judge_agent),
-            AgentTool(agent=compliance_agent),
-            AgentTool(agent=defendant_agent),
-            AgentTool(agent=optimizer_agent),
-            AgentTool(agent=prosecutor_agent),
-        ],
-    )
-
-    root_agent = code_courtroom_coordinator
-
     """Runs the agent on a simple input and expects a normal response."""
     user_input = textwrap.dedent(
         """
