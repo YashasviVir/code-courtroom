@@ -2,6 +2,7 @@ from google.adk import Agent
 from google.adk.tools import google_search
 
 from config import config
+
 from .prompt import COMPLIANCE_PROMPT
 
 compliance_agent = Agent(

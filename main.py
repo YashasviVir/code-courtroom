@@ -8,11 +8,9 @@ from agents.agent import root_agent
 
 
 async def main():
-    """Runs the agent on a simple input and expects a normal response."""
-    user_input = textwrap.dedent(
-        """
-        Double check this:
-        Question:
+    user_input = textwrap.dedent("""
+Double check this:
+Question:
 import time
 
 def process_data(data):
@@ -41,8 +39,7 @@ def main():
     print("Cleaned Data:", cleaned)
 
 main()
-    """
-    ).strip()
+    """).strip()
 
     runner = InMemoryRunner(agent=root_agent)
     session = await runner.session_service.create_session(
