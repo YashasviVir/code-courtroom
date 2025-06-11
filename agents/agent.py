@@ -11,6 +11,8 @@ from .optimizer_agent import optimizer_agent
 from .prompt import MAIN_PROMPT
 from .prosecutor_agent import prosecutor_agent
 
+# from .rewriter_agent import rewriter_agent
+
 load_dotenv()
 
 code_courtroom_coordinator = LlmAgent(
