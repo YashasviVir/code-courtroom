@@ -8,7 +8,6 @@ def should_rewrite(ctx: InvocationContext) -> bool:
     return verdict in ["Needs Refactor", "Reject"]
 
 
-# Step 2: Wrap the rewriter in a ConditionalAgent
 conditional_rewriter_agent = ConditionalAgent(
     name="conditional_rewriter_agent",
     agent=rewriter_agent,
@@ -49,11 +48,8 @@ class CodeCourtroomOrchestrator(Orchestrator):
 
         judge_output = await ctx.invoke_tool("judge_agent", judge_input)
 
-        # 5. Store verdict in session state so the ConditionalAgent can access it
         ctx.session.state["verdict"] = judge_output.get("verdict")
 
-        # 6. Call Conditional Rewriter
         rewriter_result = await conditional_rewriter_agent.run_async(ctx)
 
-        # 7. Return final combined result
         return judge_output and rewriter_result if rewriter_result else judge_output

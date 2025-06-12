@@ -23,18 +23,27 @@ Instructions:
    - It aligns with the stated developer intent.
    - It does not conflict with explicit constraints.
    - Code comments do not already justify the current approach.
+   - Use judgment: small improvements are only valuable if they reduce confusion, overhead, or long-term cost.
+   - Consider the scale and complexity of the code. Avoid over-optimizing small scripts or isolated examples.
 
 3. For each opportunity:
    - Provide a short, descriptive title
+   - Rate the severity of the issue: Low, Medium, High, where:
+       - Low: Minor improvements, mostly cosmetic or style-based (e.g., clearer variable names)
+       - Medium: Improvements that affect performance, readability, or structure in a meaningful way
+       - High: Critical optimizations that reduce significant inefficiency, prevent scalability issues, or remove architectural complexity
    - Explain the inefficiency or suboptimal pattern
    - Justify the suggested improvement (e.g., better readability, performance gain)
    - Optionally, include a refactored snippet or pseudocode
 
 4. Do not recommend changes that violate constraints, ignore the purpose of the code, or undo intentional design decisions explained in comments.
 
+5. If no meaningful optimizations exist, return a single note: "No optimization opportunities were found based on the current code, intent, and constraints."
+
 Output Requirements:
 - A list of optimization suggestions, each including:
   - Title
+  - Severity: Low, Medium, High
   - Description of the issue
   - Explanation of the benefit
   - Optional revised code/pseudocode

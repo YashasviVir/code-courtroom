@@ -6,8 +6,6 @@ from google.genai.types import Part, UserContent
 
 from orchestrator import CodeCourtroomOrchestrator
 
-# from agents.agent import root_agent
-
 
 async def main():
     user_input = textwrap.dedent("""
