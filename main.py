@@ -4,42 +4,61 @@ import textwrap
 from google.adk.runners import InMemoryRunner
 from google.genai.types import Part, UserContent
 
+# from config import config
 from orchestrator import CodeCourtroomOrchestrator
+
+# import vertexai
+# from vertexai import agent_engines
 
 
 async def main():
+    # vertexai.init(
+    #     project=config.google_cloud_project,
+    #     location=config.google_cloud_location,
+    #     staging_bucket="gs://" + config.google_cloud_storage_bucket,
+    # )
+
+    # remote_app = agent_engines.create(
+    #     display_name="Code Courtroom Agent",
+    #     description="An agent that helps with code compliance in a courtroom setting.",
+    #     agent_engine=root_agent,
+    #     requirements=["google-cloud-aiplatform[adk,agent_engines]"],
+    # )
+
+    # print("Resource Name = ", remote_app.resource_name)
+    # print("Display Name = ", remote_app.display_name)
+
     user_input = textwrap.dedent("""
-Double check this:
-Question:
-import time
+    Double check this:
+    Question:
+    import time
 
-def process_data(data):
-    result = []
-    for i in range(len(data)):
-        if data[i] not in result:
-            result.append(data[i])
-        else:
-            continue
-    return result
+    def process_data(data):
+        result = []
+        for i in range(len(data)):
+            if data[i] not in result:
+                result.append(data[i])
+            else:
+                continue
+        return result
 
-def get_user_input():
-    raw_input = input("Enter comma-separated values: ")
-    data = raw_input.split(",")
-    return data
+    def get_user_input():
+        raw_input = input("Enter comma-separated values: ")
+        data = raw_input.split(",")
+        return data
 
-def main():
-    print("Welcome to DataCleaner 1.0")
-    user_data = get_user_input()
+    def main():
+        print("Welcome to DataCleaner 1.0")
+        user_data = get_user_input()
 
+        if len(user_data) > 0:
+            user_data = user_data[0]
 
-    if len(user_data) > 0:
-        user_data = user_data[0]
+        cleaned = process_data(user_data)
+        print("Cleaned Data:", cleaned)
 
-    cleaned = process_data(user_data)
-    print("Cleaned Data:", cleaned)
-
-main()
-    """).strip()
+    main()
+        """).strip()
 
     runner = InMemoryRunner(orchestrator=CodeCourtroomOrchestrator())
     session = await runner.session_service.create_session(

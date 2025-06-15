@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 from google.adk.agents import LlmAgent
 from google.adk.tools.agent_tool import AgentTool
 
@@ -10,10 +9,6 @@ from .judge_agent import judge_agent
 from .optimizer_agent import optimizer_agent
 from .prompt import MAIN_PROMPT
 from .prosecutor_agent import prosecutor_agent
-
-# from .rewriter_agent import rewriter_agent
-
-load_dotenv()
 
 code_courtroom_coordinator = LlmAgent(
     name="code_courtroom_coordinator",
