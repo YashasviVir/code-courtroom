@@ -18,7 +18,11 @@ load_dotenv()
 code_courtroom_coordinator = LlmAgent(
     name="code_courtroom_coordinator",
     model=config.model_name,
-    description=("you are the judge."),
+    description=(
+        "You are the coordinator of an AI code review courtroom. Your role is to manage the workflow between specialized agents that evaluate a developer's code based on correctness, compliance, performance, and intent. "
+        "You ensure that each agent contributes their expertise and that the final decision reflects a balanced, structured judgment. "
+        "You only act after receiving a user prompt containing code, developer intent, and constraints."
+    ),
     instruction=MAIN_PROMPT,
     tools=[
         AgentTool(agent=judge_agent),
