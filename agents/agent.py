@@ -1,7 +1,4 @@
-from google.adk.agents import LlmAgent, ParallelAgent, SequentialAgent
-from google.adk.tools.agent_tool import AgentTool
-
-from config import config
+from google.adk.agents import ParallelAgent, SequentialAgent
 
 # Import individual agents
 from .compliance_agent.agent import compliance_agent
@@ -34,5 +31,4 @@ code_courtroom_agent = SequentialAgent(
     description="Executes the complete code courtroom workflow: parallel analysis, defense, judgment, and implementation.",
 )
 
-# For ADK tools compatibility, the root agent must be named `root_agent`
 root_agent = code_courtroom_agent
