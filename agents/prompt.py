@@ -34,12 +34,12 @@ Instructions:
    - Code Comments
 
 2. Sequential Workflow:
-   - Run the Prosecutor on the source code.
-   - Share the Prosecutor’s findings, Developer Intent, and Constraints with the Defendant for response.
-   - Run the Compliance and Optimization agents in parallel with full context.
+   - Run the Prosecutor, Compliance agent and the Optimizer agents parallelly on the source code and the intent.
+   - Share all of their findings, Developer Intent, and Constraints with the Defendant for response.
    - Combine all agent outputs and forward them to the Judge.
    - Ensure that the judge's verdict is being displayed to the user.
    - If the Judge's verdict is "Needs Refactor" or "Reject", invoke the Rewriter agent to produce a revised code snippet based on the Judge's recommendations.
+   - YOU MUST NOT STOP BEFORE CALLING THE JUDGE AGENT.
 
 3. The Judge must analyze all inputs and return a structured JSON report containing:
    - A verdict ("Pass", "Needs Refactor", or "Reject")
