@@ -4,6 +4,8 @@ import textwrap
 from google.adk.runners import InMemoryRunner
 from google.genai.types import Part, UserContent
 
+from agents.agent import root_agent
+
 # from config import config
 
 # import vertexai
@@ -59,7 +61,7 @@ async def main():
     main()
         """).strip()
 
-    runner = InMemoryRunner(orchestrator=CodeCourtroomOrchestrator())
+    runner = InMemoryRunner(agent=root_agent)
     session = await runner.session_service.create_session(
         app_name=runner.app_name, user_id="test_user"
     )
