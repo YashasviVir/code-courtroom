@@ -14,14 +14,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements (if using requirements.txt)
-# COPY requirements.txt ./
-# RUN pip install --upgrade pip && pip install -r requirements.txt
+COPY requirements.txt ./
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # If using pyproject.toml/poetry, comment out above and use below instead:
-COPY pyproject.toml ./
-COPY uv.lock ./
-RUN pip install --upgrade pip && pip install uv
-RUN uv pip install --system --require-hashes uv.lock
+# COPY pyproject.toml ./
+# COPY uv.lock ./
+# RUN pip install --upgrade pip && pip install uv
+# RUN uv pip install --system --require-hashes uv.lock
 
 # Copy project
 COPY . .
