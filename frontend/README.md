@@ -1,54 +1,57 @@
-# React + TypeScript + Vite
+# Code Courtroom Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for **Code Courtroom**, an AI-powered platform that simulates a courtroom environment for advanced code review, compliance, and optimization. The frontend is built with React, TypeScript, Vite, and Bun for a fast, modern development experience.
 
-Currently, two official plugins are available:
+## Overview
+- **Modern UI:** Built with React and Vite for fast development and hot module reloading.
+- **TypeScript:** Ensures type safety and maintainability.
+- **Bun:** Used for dependency management and running scripts.
+- **Agent Avatars:** Visual representation of specialized AI agents (Judge, Prosecutor, Defendant, Compliance, Optimizer, Rewriter).
+- **API Integration:** Communicates with the Python backend for agent orchestration and code analysis.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
+- [Bun](https://bun.sh/) (recommended)
+- Node.js 18+ (if not using Bun)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
+1. Install dependencies:
+   ```bash
+   bun install
+   # or, if you prefer npm
+   npm install
+   ```
+2. Start the development server:
+   ```bash
+   bun run dev
+   # or
+   npm run dev
+   ```
+3. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Project Structure
+```
+frontend/
+├── public/           # Static assets and images
+├── src/              # Source code
+│   ├── components/   # UI components and agent avatars
+│   ├── hooks/        # Custom React hooks
+│   ├── lib/          # Utility functions
+│   ├── pages/        # Page components
+├── package.json      # Project metadata
+├── bun.lock          # Bun lockfile
+├── tsconfig.json     # TypeScript config
+├── vite.config.ts    # Vite config
+└── ...
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Linting & Formatting
+- ESLint is configured for React and TypeScript.
+- For stricter or type-aware linting, see `eslint.config.js` and consider enabling recommended or strict rules.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Customization
+- Update agent avatars and UI in `src/components/` and `public/` as needed.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+*Part of the Code Courtroom project.*

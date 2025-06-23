@@ -5,7 +5,6 @@ import ReactMarkdown from "react-markdown";
 
 interface Agent {
   id: string;
-  name: string;
   role: string;
   image: string;
   responses: string[];
@@ -17,55 +16,43 @@ const Index = () => {
   const [agents, setAgents] = useState<Agent[]>([
     {
       id: "judge_agent",
-      name: "Judge AI",
       role: "Presiding Judge",
-      image:
-        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=400&fit=crop&crop=face",
+      image: "/judge_no_bg.png",
       responses: [],
       isActive: false,
     },
     {
       id: "prosecutor_agent",
-      name: "Prosecutor AI",
       role: "Code Prosecutor",
-      image:
-        "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=400&h=400&fit=crop&crop=face",
+      image: "/prosecutor_no_bg.png",
       responses: [],
       isActive: false,
     },
     {
       id: "defendant_agent",
-      name: "Defendant AI",
       role: "Code Defender",
-      image:
-        "https://images.unsplash.com/photo-1501286353178-1ec881214838?w=400&h=400&fit=crop&crop=face",
+      image: "/defendant_no_bg.png",
       responses: [],
       isActive: false,
     },
     {
       id: "compliance_agent",
-      name: "Compliance AI",
       role: "Compliance Officer",
-      image:
-        "https://images.unsplash.com/photo-1487252665478-49b61b47f302?w=400&h=400&fit=crop&crop=face",
+      image: "/compliance_no_bg.png",
       responses: [],
       isActive: false,
     },
     {
       id: "optimizer_agent",
-      name: "Optimizer AI",
       role: "Code Optimizer",
-      image:
-        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=400&fit=crop&crop=face",
+      image: "/optimizer_no_bg.png",
       responses: [],
       isActive: false,
     },
     {
       id: "rewriter_agent",
-      name: "Rewriter AI",
       role: "Code Rewriter",
-      image:
-        "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=400&h=400&fit=crop&crop=face",
+      image: "/rewriter_no_bg.png",
       responses: [],
       isActive: false,
     },
@@ -234,7 +221,7 @@ const Index = () => {
     <div className="min-h-screen bg-linear-to-br from-amber-900 via-orange-900 to-red-900 p-2">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-3">
+        <div className="text-center my-3">
           <h1 className="text-2xl font-bold text-amber-100 mb-1">
             CODE COURTROOM
           </h1>
@@ -249,7 +236,6 @@ const Index = () => {
             {judgeAgent && (
               <div className="flex items-center space-x-4">
                 <AgentAvatar
-                  name={judgeAgent.name}
                   role={judgeAgent.role}
                   image={judgeAgent.image}
                   isActive={judgeAgent.isActive}
@@ -280,9 +266,6 @@ const Index = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 mb-3">
           {/* Left Side - Prosecution */}
           <div className="space-y-2">
-            <h2 className="text-sm font-semibold text-amber-200 text-center">
-              Prosecution Side
-            </h2>
             {leftSideAgents.map((agent) => (
               <div
                 key={agent.id}
@@ -290,7 +273,6 @@ const Index = () => {
               >
                 <div className="flex items-center space-x-3">
                   <AgentAvatar
-                    name={agent.name}
                     role={agent.role}
                     image={agent.image}
                     isActive={agent.isActive}
@@ -319,16 +301,11 @@ const Index = () => {
 
           {/* Right Side - Defense */}
           <div className="space-y-2">
-            <h2 className="text-sm font-semibold text-amber-200 text-center">
-              Defense Side
-            </h2>
-
             {/* Defendant Agent */}
             {defendantAgent && (
               <div className="bg-amber-950/70 rounded-lg p-2 shadow-lg border border-amber-700/30 backdrop-blur-xs">
                 <div className="flex items-center space-x-3">
                   <AgentAvatar
-                    name={defendantAgent.name}
                     role={defendantAgent.role}
                     image={defendantAgent.image}
                     isActive={defendantAgent.isActive}
@@ -359,7 +336,6 @@ const Index = () => {
               <div className="bg-amber-950/70 rounded-lg p-2 shadow-lg border border-amber-700/30 backdrop-blur-xs">
                 <div className="flex items-center space-x-3">
                   <AgentAvatar
-                    name={rewriterAgent.name}
                     role={rewriterAgent.role}
                     image={rewriterAgent.image}
                     isActive={rewriterAgent.isActive}
@@ -390,13 +366,6 @@ const Index = () => {
         {/* Code Input - Full Width at Bottom */}
         <div className="w-full mb-2">
           <CodeInput onSubmit={handleCodeSubmit} isProcessing={isProcessing} />
-        </div>
-
-        {/* Footer */}
-        <div className="text-center text-amber-300 text-xs">
-          <p>
-            Submit your code for comprehensive AI-powered review and analysis
-          </p>
         </div>
       </div>
     </div>
