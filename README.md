@@ -24,6 +24,9 @@ code-courtroom/
 └── README.md         # Project documentation
 ```
 
+## Architecture Diagram
+![code-courtroom-architecture-diagram](https://github.com/user-attachments/assets/87993d52-60fa-428f-a108-9e53505240ad)
+
 ## Getting Started
 
 ### Prerequisites
